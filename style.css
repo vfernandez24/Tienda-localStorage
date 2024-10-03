@@ -1,0 +1,563 @@
+:root {
+    --background: #FFFFFF;
+    --text: #000000;
+    --destacado: #8B0000;
+    --text-secondary: #555;
+    --alerts: #ff0000;
+    --borders: #888;
+    --hover: #ececec;
+    --hover-red: #9100007e;
+    --hover-black: #444;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    padding: 5px 0;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--hover-black);
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--text-secondary);
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--hover);
+    padding: 5px 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    max-height: 100vh;
+    overflow: hidden;
+    width: 100%;
+}
+
+.container {
+    max-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: var(--background);
+}
+
+
+/** HEADER */
+header {
+   height: 12vh;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center; 
+    border-bottom: 2px solid var(--borders);
+}
+
+header .logo {
+    text-decoration: none;
+    color: var(--text);
+}
+
+header .logo h1 {
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 30px;
+    text-shadow: 0px 0px 10px var(--text-secondary);
+
+    span {
+        text-decoration: none;
+        font-weight: 700;
+        text-shadow: 0px 0px 10px var(--destacado);
+        color: var(--destacado);
+    }
+}
+
+
+/** NAV */
+nav {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--borders);
+    padding: 0 40px;
+}
+
+nav label {
+    display: flex;
+    align-items: center;
+}
+
+    /*? SELECT */
+
+#filterSelect {
+    position: relative;
+    width: 150px;
+    user-select: none;
+}
+
+#filterSelect .select-box{
+    background-color: #FFFFFF;
+    padding: 10px;
+    padding-left: 30px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    font-weight: 500;
+    border-bottom: 2px solid var(--background);
+}
+
+#filterSelect .select-box:hover {
+    border-bottom: 2px solid var(--text);
+}
+
+#filterSelect .select-box::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 15px;
+    width: 24px;
+    height: 24px;
+    background-image: url(assets/filter_icon.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+#filterSelect .container-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+    border-radius: 5px;
+    max-height: 0; /* Comienza colapsado */
+    overflow: hidden;
+    z-index: 1;
+}
+
+#filterSelect .container-options .option {
+    padding: 10px;
+    font-size: 17px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    background-color: var(--background);
+    border-bottom: 1.5px solid var(--borders);
+    transition: all .3s ease;
+}
+
+#filterSelect .container-options .option:hover {
+    text-decoration: underline;
+ }
+
+#filterSelect:hover .container-options {
+    max-height: 400px;
+}
+
+#filterSelect:hover .select-box {
+    border-bottom: 2px solid var(--text);
+}
+
+    /* ? BOTONES ADD Y DELETE */
+.container_btns {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.deleteList {
+    all: unset;
+    user-select: none;
+    font-size: 15px;
+    padding: 10px 20px;
+    padding-left: 40px;
+    border-radius: 40px;
+    transition: all .3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.deleteList:hover {
+    background: var(--hover-red);
+}
+
+.createBtn {
+    all: unset;
+    user-select: none;
+    color: var(--background);
+    background-color: var(--text);
+    padding: 10px 20px;
+    padding-left: 40px;
+    border-radius: 40px;
+    font-size: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: all .3s ease;
+}
+
+.createBtn:hover {
+    background: var(--hover-black);
+}
+
+.createBtn::before, .deleteList::before {
+    content: '';
+    position: absolute;
+    top:5px;
+    left: 7px;
+
+    width: 28px;
+    height: 28px;
+    background-image: url(assets/add.svg);
+    background-size: cover;
+    background-position: center;
+}
+
+.deleteList::before {
+    background-image: url(assets/delete.svg);
+    left: 9px;
+}
+
+
+/** MAIN */
+.container-int {
+    width: 100%;
+    height: calc(100vh - 12vh - 10vh);
+    display: flex;
+    justify-content: left;
+}
+
+    /*? LEFT */
+.left {
+    width: 70%;
+    height: 100%;
+    position: relative;
+}
+
+.ejemploLista {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7vh;
+    border-bottom: 1px solid var(--borders);
+    display: flex;
+    align-items: center;
+    padding-left: 150px;
+}
+
+.ejLista--1 {
+    display: inline-block;
+    width: 61%;
+}
+
+ul {
+    max-height: calc(100vh - 12vh - 10vh - 7vh - 10px);
+    overflow-y: auto;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 7vh;
+    padding: 10px;
+}
+
+ul li {
+    width: 97%;
+    height: 9vh;
+    margin: 10px;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+ul li:hover {
+    background: var(--hover)
+}
+
+ul li .span_container {
+    display: inline-block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 80px;
+    gap: 20px;
+}
+
+ul li .span_container button {
+    display: inline-block;
+    border: none;
+    outline: none;
+    height: 35px;
+    min-width: 35px;
+    border-radius: 100px;
+    background-color: var(--hover);
+    background-size: cover;
+    background-position: center;
+    padding: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+ul li .span_container button.editSpan {
+    background-image: url(assets/edit.svg);
+    background-size: cover;
+    background-position: center; 
+    border: 3px solid var(--hover);   
+}
+
+ul li:hover .span_container button {
+    opacity: 1;
+}
+
+ul li .span_container .editSpan:hover {
+    background-color: var(--borders);
+    border-color: var(--borders);
+}
+
+ul li .span_container button.deleteSpan {
+    background-image: url(assets/delete.svg);
+    background-size: cover;
+    background-position: center; 
+    border: 3px solid var(--hover);   
+}
+
+ul li .span_container .deleteSpan:hover {
+    background-color: var(--hover-red);
+    border-color: #9100001c;
+}
+
+ul li:hover .span_container {
+    visibility: initial;
+}
+
+ul li div:nth-of-type(1) {
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    background-color: #222;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li .nombreProducto {
+    display: inline-block;
+    width: 63%;
+    font-size: 20px;
+    padding-left: 40px;
+}
+
+ul li .precioProducto, ul li .precioProducto--1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+ul li .tiendaProducto {
+    display: none;
+}
+
+/*? RIGHT */
+.right {
+    width: 30%;
+    height: 100%;
+    border-left: 1px solid var(--borders);
+    padding: 20px;
+}
+
+.right .img_right {
+    width: 200px;
+    height: 200px;
+    background: url(img/fotoEj.jpg);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    margin: 10px auto;
+}
+
+.right h2 {
+    padding: 10px 0;
+}
+
+.right #precioProductoRight {
+    color: var(--destacado);
+    padding: 10px 0 5px 0;
+}
+
+.right p {
+    padding: 10px;
+}
+
+
+/** OVERLAY */
+.overlay {
+    width: 100%;
+    height: 100vh;
+    z-index: 50;
+    background: #00000040;
+    position: absolute;
+    display: none;
+}
+
+.overlay.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/** FORM */
+/*? AÑADIR */
+
+.form {
+    position: relative;
+    width: 600px;
+    height: 85vh;
+    border-radius: 30px;
+    padding: 30px 20px;
+    background: var(--background);
+}
+
+.form h1 {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.form h3 {
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 1px;
+    padding: 10px 0;
+}
+
+.form label {
+    display: block;
+    width: 100%;
+    height: 12vh;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.form input {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 7vh;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    background: var(--hover);
+}
+
+.form input:focus {
+    box-shadow: 0px 0px 10px #999;
+}
+
+
+.form button:nth-of-type(1) {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: var(--background);
+    border-radius: 40px;
+    border: 1px solid var(--borders);
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 170px;
+    transition: all .3s ease;
+}
+
+.form button:nth-of-type(2):hover {
+    background: var(--hover-black);
+    border-color: var(--hover-black);
+}
+
+.form button:nth-of-type(2) {
+    padding: 10px 30px;
+    font-size: 15px;
+    color: var(--background);
+    background: var(--text);
+    border-radius: 40px;
+    outline: none;
+    border: 1px solid var(--text);
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    transition: all .3s ease;
+}
+
+.form button:nth-of-type(1):hover {
+    background-color: var(--hover-red);
+    border-color: #9100001c;
+}
+
+.form button:nth-of-type(3) {
+    all: unset;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    transition: all .3s ease;
+}
+
+.form button:nth-of-type(3):hover {
+    background: var(--hover);
+}
+
+.form button:nth-of-type(4) {
+    all: unset;
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    padding: 10px;
+    transition: all .3s ease;
+}
+
+.form button:nth-of-type(4):hover {
+    background-color: var(--hover);
+}
+
+#alertProduct {
+    display: block;
+    padding: 20px 60px;
+    background: var(--hover-black);
+    color: var(--background);
+    font-weight: 300;
+    font-size: 17px;
+    position: absolute;
+    display: flex;
+    bottom: -80px;
+    left: 40px;
+    cursor: default;
+    border-radius: 20px;
+    z-index: 200;
+    transition: all .3s ease-in-out;
+}
+
+#alertProduct.show {
+    bottom: 40px;
+}

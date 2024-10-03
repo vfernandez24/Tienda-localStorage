@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - Local Storage</title>
+    <link rel="icon" href="assets/icon.svg">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- styles -->
+    <link rel="stylesheet" href="style.css">
+    <!-- scripts -->
+    <script src="js/btn.js" defer></script>
+    <script src="js/filter.js" defer></script>
+    <script src="js/right.js"></script>
+</head>
+<body>
+
+    <div id="overlay" class="overlay">
+        
+        <div class="form añadir">
+            <h1 id="titleForm">Añadir producto</h1>
+            <h3 id="subtitleForm">Introduce los datos del producto y añadelo a tu lista</h3>
+            <label for="nameProduct">
+                <span id="nameProduct--span">Nombre:</span>
+                <input type="text" id="nameProduct" placeholder="ej: Chaqueta Nike">
+            </label>
+            <label for="prieceProduct">
+                Precio:
+                <input type="number" id="priceProduct" placeholder="ej: 69.99">
+            </label>
+            <label for="shopProduct">
+            Tienda:
+            <input type="text" id="shopProduct" placeholder="ej: Nike">
+            </label>
+            <label class="last-label" for="imgProduct">
+                <input type="file" id="imgProduct">
+            </label>
+            <button onclick=hiddenForm()>Cancelar</button>
+            <button onclick=addProduct() id="btnAñadir">Añadir</button>
+            <button onclick=hiddenForm()>
+                <img src="assets/close.svg">
+            </button>
+            <button onclick=resetForm()>
+                <img src="assets/reload.svg">
+            </button>
+        </div>
+    </div>
+    
+    <div class="container">
+
+        <!--! Alerta para eventos -->
+        <h3 id="alertProduct">Producto añadido</h3>
+
+        <header>
+            <a href="" class="logo">
+                <h1>Tienda<span>LocalStorage</span>.com</h1>
+            </a>
+        </header>
+
+        <nav>
+            <div for="filterSelect">
+                <div id="filterSelect">
+                    <div class="select-box">Filtrar</div>
+                    <div class="container-options">
+                        <div class="option" value="mostrarTodo">Sin Filtrar</div>
+                        <div onclick=ordenarName() class="option" value="mostrarTodo">Por nombre</div>
+                        <div onclick=ordenarPrecio() class="option" value="mostrarTodo">Por precio</div>
+                    </div>
+                </div>
+            </div>
+            <div class="container_btns">
+                <button onclick=deleteList() class="deleteList">Eliminar todo</button>
+                <button onclick=showForm() class="createBtn">Añadir Producto</button>
+            </div>
+        </nav>
+
+        <div class="container-int">
+
+            <div class="left">
+                <div class="ejemploLista">
+                    <h3 class="ejLista--1">Nombre</h3>
+                    <h3 class="ejLista--2">Precio</h3>
+                </div>
+                <ul id="listContainer">
+                    <!-- <li class="li">
+                        <div style="background-image: url(img/fotoEj.jpg);"></div>
+                        <span class="nombreProducto">Chaqueta Nike</span>
+                        <span class="precioProducto--1"><span class="precioProducto">69.99</span>€</span>
+                        <span class="tiendaProducto">Nike</span>
+                        <div class="span_container">
+                            <button onclick=editProducto(this) class="editSpan"></button>
+                            <button onclick=deleteProducto(this) class="deleteSpan"></button>
+                        </div>
+                    </li>
+                    <li class="li">
+                        <div style="background-image: url(img/gorroEj.jpeg);"></div>
+                        <span class="nombreProducto">Gorro Adidas</span>
+                        <span class="precioProducto--1"><span class="precioProducto">69.99</span>€</span>
+                        <div class="span_container">
+                            <button onclick=editProducto(this) class="editSpan"></button>
+                            <button onclick=deleteProducto(this) class="deleteSpan"></button>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+
+            <div class="right">
+                <div class="img_right"></div>
+                <h2 id="tituloProductoRight">Chaqueta Nike</h2>
+                <h3 id="precioProductoRight">69.99€</h3>
+                <h3 id="tiendaProductoRight">Nike</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium quo exercitationem ut iure, nobis officiis numquam, neque ullam quisquam odio quia, quasi consectetur ipsam excepturi unde nemo incidunt fugiat eos!</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
