@@ -8,6 +8,7 @@ function deleteList() {
     
     if (confirm('¿Estás seguro de que quieres eliminar todos los productos de la lista?')) {
         document.getElementById('listContainer').innerHTML = '';
+        document.getElementById('listRight').innerHTML = ''
     }
 
     saveList();
@@ -78,6 +79,13 @@ function addProduct() {
         btnsContainer.classList.add('span_container')
         btnsContainer.innerHTML = '<button onclick=editProducto(this) class="editSpan"></button><button onclick=deleteProducto(this) class="deleteSpan"></button>'
         li.appendChild(btnsContainer)        
+
+        // Crear y agregar los li en el #right
+        const ulRight = document.getElementById('ulRight')
+        let liRight = document.createElement('li')
+        liRight.classList.add('liRight')
+        liRight.innerHTML = document.getElementById('priceProduct').value
+        ulRight.appendChild(liRight)
     
         document.getElementById('nameProduct').value = ''
         document.getElementById('priceProduct').value = ''
