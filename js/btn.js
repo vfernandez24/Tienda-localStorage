@@ -81,7 +81,7 @@ function addProduct() {
         li.appendChild(btnsContainer)        
 
         // Crear y agregar los li en el #right
-        const ulRight = document.getElementById('ulRight')
+        const ulRight = document.getElementById('listRight')
         let liRight = document.createElement('li')
         liRight.classList.add('liRight')
         liRight.innerHTML = document.getElementById('priceProduct').value
@@ -120,9 +120,10 @@ function editProducto(e) {
     document.getElementById('priceProduct').value = li.querySelector('.precioProducto').innerHTML
     document.getElementById('shopProduct').value = li.querySelector('.tiendaProducto').innerHTML
     document.getElementById('btnAñadir').addEventListener('click', function(){
-        li.remove()
+    li.remove()
     })
     saveList()
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////!
 }
 
 //Eliminar un producto
@@ -138,11 +139,13 @@ function deleteProducto(button) {
 //Guardar lista
 function saveList() {
     localStorage.setItem('list', document.getElementById('listContainer').innerHTML);
+    localStorage.setItem('listRight', document.getElementById('listRight').innerHTML);
 }
 
 //Mostrar lista al recargar
 function showList() {
     document.getElementById('listContainer').innerHTML = localStorage.getItem('list')
+    document.getElementById('listRight').innerHTML = localStorage.getItem('listRight')
 }
 
 showList()
