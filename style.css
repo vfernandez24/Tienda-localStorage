@@ -100,15 +100,15 @@ nav label {
 
 #filterSelect {
     position: relative;
-    width: 150px;
+    width: 170px;
     user-select: none;
 }
 
 #filterSelect .select-box{
     background-color: #FFFFFF;
     padding: 10px;
-    padding-left: 30px;
-    text-align: center;
+    padding-left: 50px;
+    text-align: left;
     cursor: pointer;
     position: relative;
     font-weight: 500;
@@ -126,7 +126,7 @@ nav label {
     left: 15px;
     width: 24px;
     height: 24px;
-    background-image: url(assets/filter_icon.svg);
+    background-image: url(../assets/filter_icon.svg);
     background-size: cover;
     background-position: center;
 }
@@ -207,7 +207,7 @@ nav label {
     background: var(--hover-black);
 }
 
-.createBtn::before, .deleteList::before {
+.createBtn.pc::before, .deleteList.pc::before {
     content: '';
     position: absolute;
     top:5px;
@@ -215,14 +215,18 @@ nav label {
 
     width: 28px;
     height: 28px;
-    background-image: url(assets/add.svg);
+    background-image: url(../assets/add.svg);
     background-size: cover;
     background-position: center;
 }
 
-.deleteList::before {
-    background-image: url(assets/delete.svg);
+.deleteList.pc::before {
+    background-image: url(../assets/delete.svg);
     left: 9px;
+}
+
+.mobile {
+    display: none;
 }
 
 
@@ -268,7 +272,7 @@ ul {
 }
 
 ul li {
-    width: 97%;
+    width: min(97%, 100%);
     height: 9vh;
     margin: 10px;
     list-style: none;
@@ -285,7 +289,6 @@ ul li:hover {
 }
 
 ul li .span_container {
-    display: inline-block;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -310,7 +313,7 @@ ul li .span_container button {
 }
 
 ul li .span_container button.editSpan {
-    background-image: url(assets/edit.svg);
+    background-image: url(../assets/edit.svg);
     background-size: cover;
     background-position: center; 
     border: 3px solid var(--hover);   
@@ -326,7 +329,7 @@ ul li .span_container .editSpan:hover {
 }
 
 ul li .span_container button.deleteSpan {
-    background-image: url(assets/delete.svg);
+    background-image: url(../assets/delete.svg);
     background-size: cover;
     background-position: center; 
     border: 3px solid var(--hover);   
@@ -353,6 +356,10 @@ ul li div:nth-of-type(1) {
     align-items: center;
 }
 
+ul li .precioProducto--1 {
+    width: 80px;
+}
+
 ul li .nombreProducto {
     display: inline-block;
     width: 63%;
@@ -371,33 +378,18 @@ ul li .tiendaProducto {
 
 /*? RIGHT */
 .right {
-    width: 30%;
-    height: 100%;
+    width: 30vw;
+    height: calc(100vh - 12vh - 10vh);
     border-left: 1px solid var(--borders);
     padding: 20px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
-.right .img_right {
-    width: 200px;
-    height: 200px;
-    background: url(img/fotoEj.jpg);
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    margin: 10px auto;
-}
-
-.right h2 {
-    padding: 10px 0;
-}
-
-.right #precioProductoRight {
-    color: var(--destacado);
-    padding: 10px 0 5px 0;
-}
-
-.right p {
-    padding: 10px;
+.right ul {
+    width: 100%;
+    overflow: hidden;
 }
 
 
